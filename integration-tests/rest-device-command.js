@@ -784,7 +784,7 @@ describe('REST API Device Command', function () {
             });
 
             it('should return error when getting commands with refresh jwt', function (done) {
-                utils.get(path.current, {user: user, jwt: utils.jwt.admin_refresh }, function (err) {
+                utils.get(path.current, {jwt: utils.jwt.admin_refresh }, function (err) {
                     assert.strictEqual(!(!err), true, 'Error object created');
                     assert.strictEqual(err.error, 'Unauthorized');
                     assert.strictEqual(err.httpStatus, status.NOT_AUTHORIZED);

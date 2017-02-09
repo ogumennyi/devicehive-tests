@@ -365,7 +365,7 @@ describe('REST API Network', function () {
                     name: NETWORK_1,
                     description: null,
                     devices: [{
-                        id: DEVICE_GUID,
+                        guid: DEVICE_GUID,
                         name: DEVICE,
                         status: null,
                         deviceClass: {

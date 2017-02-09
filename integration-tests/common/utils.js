@@ -509,7 +509,6 @@ var utils = {
                     if (item[name] == null || item[name].indexOf(self.NAME_PREFIX) < 0) {
                         return cb();
                     }
-
                     utils.delete(path, {user: utils.admin, id: item.id}, cb);
                 }, callback)
             });
@@ -559,7 +558,8 @@ var utils = {
     clearDataJWT: function (done) {
 
         var self = this;
-        function clearEntities(path, name, callback) {
+        function clearEntities(path, name, callback, identifier_name) {
+            identifier_name = typeof identifier_name !== 'undefined' ?  identifier_name : "id";
             utils.get(path, {jwt: utils.jwt.admin}, function (err, result) {
                 if (err) {
                     return callback(err);
@@ -569,8 +569,7 @@ var utils = {
                     if (item[name] == null || item[name].indexOf(self.NAME_PREFIX) < 0) {
                         return cb();
                     }
-
-                    utils.delete(path, {jwt: utils.jwt.admin, id: item.id}, cb);
+                    utils.delete(path, {jwt: utils.jwt.admin, id: item[identifier_name]}, cb);
                 }, callback)
             });
         }
@@ -580,7 +579,7 @@ var utils = {
         }
 
         function clearDevices(callback) {
-            clearEntities(path.DEVICE, 'name', callback);
+            clearEntities(path.DEVICE, 'name', callback, "guid");
         }
 
         function clearDeviceClasses(callback) {

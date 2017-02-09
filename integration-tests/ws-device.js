@@ -25,13 +25,7 @@ describe('WebSocket API Device Unit', function () {
             name: DEVICE,
             isPermanent: true,
             offlineTimeout: 1234,
-            data: {c: '3', d: '4'},
-            equipment: [{
-                name: "_integr-test-eq",
-                code: "321",
-                type: "_integr-test-type",
-                data: {e: '5', f: '6'}
-            }]
+            data: {c: '3', d: '4'}
         }
     };
     var deviceId = utils.getName('ws-device-id');
@@ -104,7 +98,7 @@ describe('WebSocket API Device Unit', function () {
                 .params({jwt: utils.jwt.admin_refresh, data: device})
                 .expectError(401, 'Unauthorized')
                 .send(done);
- 
+
         });
 
         it('should get information about current device', function (done) {

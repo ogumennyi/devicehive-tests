@@ -103,7 +103,6 @@ describe('REST API User', function () {
                 .expect({
                     id: user.id,
                     login: user.login,
-                    role: 1,
                     status: 0
                 })
                 .send(done);
@@ -131,7 +130,6 @@ describe('REST API User', function () {
                 .expect({
                     id: user.id,
                     login: user.login,
-                    role: 0,
                     status: 0,
                     lastLogin: null
                 })
@@ -154,7 +152,6 @@ describe('REST API User', function () {
                         login: user.login,
                         password: user.password,
                         facebookLogin: 'facebook',
-                        role: 0,
                         status: 0 }
                 })
                 .send(function (err, result) {
@@ -174,7 +171,6 @@ describe('REST API User', function () {
                     id: user.id,
                     login: user.login,
                     facebookLogin: 'facebook', // TODO: No 'facebookLogin' key
-                    role: 0,
                     status: 0,
                     lastLogin: null
                 })
@@ -194,7 +190,6 @@ describe('REST API User', function () {
                         login: LOGIN,
                         password: utils.NEW_USER_PASSWORD,
                         facebookLogin: 'facebook-2',
-                        role: 0,
                         status: 0 }
                 })
                 .send(done);
@@ -207,7 +202,6 @@ describe('REST API User', function () {
                     data: {
                         login: LOGIN,
                         password: utils.NEW_USER_PASSWORD,
-                        role: 0,
                         status: 0 }
                 })
                 .expectError(status.FORBIDDEN, 'User with such login already exists. Please, select another one')
@@ -222,7 +216,6 @@ describe('REST API User', function () {
                         login: utils.getName('oauth-usr-2-1'),
                         password: utils.NEW_USER_PASSWORD,
                         facebookLogin: 'facebook-2', // TODO: No fail when using same oauth login 'facebook-2'
-                        role: 0,
                         status: 0 }
                 })
                 .expectError(status.FORBIDDEN, 'User with such login already exists. Please, select another one')
@@ -284,7 +277,6 @@ describe('REST API User', function () {
                         .expect({
                             id: user.id,
                             login: user.login,
-                            role: 0,
                             status: 0,
                             lastLogin: null,
                             networks: [{
@@ -316,7 +308,6 @@ describe('REST API User', function () {
                         googleLogin: 'google-4',
                         facebookLogin: 'facebook-4',
                         githubLogin: 'github-4',
-                        role: 0,
                         status: 0
                     }
                 })
@@ -337,7 +328,6 @@ describe('REST API User', function () {
                 googleLogin: 'google-4-upd',
                 facebookLogin: 'facebook-4-upd',
                 githubLogin: 'github-4-upd',
-                role: 1,
                 status: 1
             };
 
@@ -385,7 +375,6 @@ describe('REST API User', function () {
                         .expect({
                             id: user.id,
                             login: user.login,
-                            role: 0,
                             status: 1,
                             lastLogin: null
                         })
@@ -411,7 +400,6 @@ describe('REST API User', function () {
                         googleLogin: 'google-5',
                         facebookLogin: 'facebook-5',
                         githubLogin: 'github-5',
-                        role: 1,
                         status: 0
                     }
                 })
@@ -433,7 +421,6 @@ describe('REST API User', function () {
                 googleLogin: 'google-5-upd',
                 facebookLogin: 'facebook-5-upd',
                 githubLogin: 'github-5-upd',
-                role: 0,
                 status: 1
             };
 
@@ -458,7 +445,6 @@ describe('REST API User', function () {
                         googleLogin: 'google-5-upd',
                         facebookLogin: 'facebook-5-upd',
                         githubLogin: 'github-5-upd',
-                        role: 0,
                         status: 1
                     })
                     .send(callback);
